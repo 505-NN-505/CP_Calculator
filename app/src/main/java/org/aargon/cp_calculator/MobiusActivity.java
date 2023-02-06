@@ -2,8 +2,12 @@ package org.aargon.cp_calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,10 +17,35 @@ public class MobiusActivity extends AppCompatActivity {
     TextView textViewResult;
     Button calculateButton, resetButton;
 
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> adapterItems;
+
+    SelectorClass selector = new SelectorClass();
+
+    public void switchToActivity(String item) {
+        Intent intent = new Intent(this, selector.activityHashMap.get(item));
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobius);
+
+        autoCompleteTextView = findViewById(R.id.auto_complete_text);
+        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, selector.calculatorItems);
+
+        autoCompleteTextView.setAdapter(adapterItems);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                switchToActivity(item);
+            }
+        });
+
         editTextn1 = findViewById(R.id.editTextNumber1);
         textViewResult = findViewById(R.id.result);
         calculateButton = findViewById(R.id.buttonCalculate);

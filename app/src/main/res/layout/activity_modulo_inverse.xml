@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     android:background="@color/cp_dark">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/button_background_cp_dark"
+        android:hint="@string/select"
+        android:textColorHint="#8C8C8C"
+        app:boxStrokeColor="#000000"
+        app:endIconTint="#FFFFFF"
+        app:hintAnimationEnabled="false"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+        app:hintTextColor="#8C8C8C"
+        app:layout_constraintBottom_toTopOf="@+id/textViewOperation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconTint="#FFFFFF">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background_cp_dark"
+            android:inputType="none"></AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:id="@+id/outputArea"
         android:layout_width="380dp"
@@ -196,7 +224,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="375dp"
         android:layout_height="192dp"
@@ -207,6 +235,7 @@
         android:text="In modular arithmetic we do not have any division operator, instead we have modular inverse.\n  \t\t - If the modular inverse of a(mod m) is x, then a.x ≡ (1 mod m)\n \t\t - If gcd(a, m) != 1, then a has no modular inverse under modulo m."
         android:textAlignment="gravity"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/inputArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

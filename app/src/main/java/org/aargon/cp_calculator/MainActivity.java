@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToMain() {
-        Intent intent = new Intent(this, BigModActivity.class);
+        Intent intent = new Intent(this, AdditionActivity.class);
         startActivity(intent);
         finish();
     }
